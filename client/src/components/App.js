@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello, {user}</h1>
+      <h1>Hello, {user.username}</h1>
       <button variant="outline" onClick={handleLogoutClick}>
           Logout
       </button>

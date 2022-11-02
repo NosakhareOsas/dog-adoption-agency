@@ -13,11 +13,23 @@ function App() {
     });
   }, []);
 
+  //logout
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
-      <h1>{user}</h1>
+      <h1>Hello, {user}</h1>
+      <button variant="outline" onClick={handleLogoutClick}>
+          Logout
+      </button>
     </>
   );
 }

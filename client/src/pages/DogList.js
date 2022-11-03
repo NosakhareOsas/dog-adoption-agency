@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from "react";
 import DogCard from "../components/DogCard";
 
 function DogList ({dogs}){

@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 function CreateDog({user}){
     let baseData = {
-        user_id: user,
-        is_adopted: false,
-        name: "",
+        name: "simba",
         gender: "",
         breed: "",
         image_url: "",
-        size: "",
+        size: "Big",
         age: 0
     }
     const [formData, setFormData] = useState(baseData)
@@ -17,22 +15,25 @@ function CreateDog({user}){
 
     function handleChange(e){
         setFormData({...formData, [e.target.id]:e.target.value})
-        console.log(formData)
+        // console.log(formData)
     }
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log(formData)
         setIsLoading(true);
-        fetch("/create", {
+        fetch("/dogs", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ formData }),
+          body: JSON.stringify(formData),
         }).then((r) => {
           setIsLoading(false);
           if (r.ok) {
-            r.json().then((data) => console.log(data));
+            r.json().then((dog) => {
+                console.log(dog.user.username)
+                setErrors([])});
           } else {
             r.json().then((err) => setErrors(err.errors));
           }
@@ -60,16 +61,6 @@ function CreateDog({user}){
                     onChange={handleChange}
                 />
                 <br/>
-
-                <label htmlFor="gender">Gender</label>
-                <input
-                    type="text"
-                    id="gender"
-                    autoComplete="off"
-                    value={formData.gender}
-                    onChange={handleChange}
-                />
-                <br/>
                 
                 <label htmlFor="imageUrl">Image Link</label>
                 <input
@@ -93,9 +84,16 @@ function CreateDog({user}){
                 
                 <select id='size' onChange={handleChange} >
                     <option>What is the size of your dog</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="big">Big</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Big">Big</option>
+                </select>
+                <br/>
+
+                <select id='gender' onChange={handleChange} >
+                    <option>What is the gender of your dog</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
                 <br/>
 

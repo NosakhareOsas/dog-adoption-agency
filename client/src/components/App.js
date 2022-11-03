@@ -39,6 +39,12 @@ function App() {
     setDogs([...dogs, dog])
   }
 
+  function handleDogDelete(deletedDog){
+    const updatedDogList = dogs.filter((dog) => dog.id.toString() !== deletedDog.id.toString())
+    console.log(updatedDogList)
+    setDogs(updatedDogList)
+  }
+
   //logout
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -61,7 +67,7 @@ function App() {
       
       <CreateDog onDogCreate={handleNewDog}/>
       <Routes>
-          <Route path={`dogs`} element={<DogList dogs={dogs}/>}/>
+          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {handleDogDelete}/>}/>
           <Route path={`dogs/:id`} element={<DogInfo />} />
       </Routes> 
     </>

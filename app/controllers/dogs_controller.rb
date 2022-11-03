@@ -16,6 +16,12 @@ class DogsController < ApplicationController
         render json: Dog.all, include: [:user], status: :ok
     end
 
+    def destroy
+        dog = Dog.find_by!(id: params[:id])
+        dog.destroy
+        render json: dog
+    end
+
     private
     def dog_params
         params.permit(:name, :gender, :breed, :image_url, :size, :age).with_defaults(user_id: session[:user_id], is_adopted: false)

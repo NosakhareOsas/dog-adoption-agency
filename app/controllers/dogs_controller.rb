@@ -8,7 +8,7 @@ class DogsController < ApplicationController
     end
 
     def show
-        dog = Dog.find_by(id: params[:id])
+        dog = Dog.find_by!(id: params[:id])
         render json: dog, include: [:user]
     end
 
@@ -30,6 +30,6 @@ class DogsController < ApplicationController
     end
 
     def render_not_found
-        render json: {errors: ["Dog not Found"]}, status: :render_not_found
+        render json: {errors: ["Dog not Found"]}, status: :not_found
     end
 end

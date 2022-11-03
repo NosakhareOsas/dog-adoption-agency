@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
+import {Route, Routes, useMatch} from "react-router-dom";
 import Login from "../pages/Login";
 import CreateDog from "../pages/CreateDog";
 import DogList from "../pages/DogList";
+import DogInfo from "../pages/DogInfo";
 
 function App() {
   const [user, setUser] = useState(null);
   const [dogs, setDogs] = useState([])
+
+  const match = useMatch({
+    path: "/*",
+    end: true, 
+    caseSensitive: true 
+  });
+  console.log(match.pathname, match.pathnameBase, match.params['*'])
 
   useEffect(() => {
     // auto-login
@@ -48,9 +57,13 @@ function App() {
       <button variant="outline" onClick={handleLogoutClick}>
           Logout
       </button>
-      <DogList dogs={dogs}/>
+      
       
       <CreateDog onDogCreate={handleNewDog}/>
+      <Routes>
+          <Route path={`dogs`} element={<DogList dogs={dogs}/>}/>
+          <Route path={`dogs/:id`} element={<DogInfo />} />
+      </Routes> 
     </>
   );
 }

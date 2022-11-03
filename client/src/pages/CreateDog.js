@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CreateDog({user}){
+function CreateDog(){
     let baseData = {
         name: "simba",
         gender: "",

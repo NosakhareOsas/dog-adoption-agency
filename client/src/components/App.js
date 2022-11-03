@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Login from "../pages/Login";
-import CreateDog from "./CreateDog";
+import CreateDog from "../pages/CreateDog";
+import DogList from "../pages/DogList";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,7 +32,8 @@ function App() {
       <button variant="outline" onClick={handleLogoutClick}>
           Logout
       </button>
-      <CreateDog user = {user.id}/>
+      <DogList />
+      <CreateDog />
     </>
   );
 }

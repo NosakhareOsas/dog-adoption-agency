@@ -13,11 +13,7 @@ function DogList (){
     return (
         <>
             <h3>Dog list</h3>
-            {dogs.map((dog)=>
-                {
-                  <h6 key={dog.id}>{dog.name}</h6>  
-                })
-            }
+            {dogs.map((dog) => <h4 key={dog.id}>{dog.name}</h4>)}
         </>
         
     );

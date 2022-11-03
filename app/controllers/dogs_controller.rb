@@ -8,8 +8,12 @@ class DogsController < ApplicationController
     end
 
     def show
-        dog = dog.find_by(id: params[:id])
+        dog = Dog.find_by(id: params[:id])
         render json: dog, include: [:user]
+    end
+
+    def index
+        render json: Dog.all, status: :ok
     end
 
     private

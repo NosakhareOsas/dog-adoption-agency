@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-function CreateDog(){
+function CreateDog({onDogCreate}){
     let baseData = {
-        name: "simba",
+        name: "",
         gender: "",
         breed: "",
         image_url: "",
-        size: "Big",
+        size: "",
         age: 0
     }
     const [formData, setFormData] = useState(baseData)
@@ -32,7 +32,7 @@ function CreateDog(){
           setIsLoading(false);
           if (r.ok) {
             r.json().then((dog) => {
-                console.log(dog.user.username)
+                onDogCreate(dog)
                 setErrors([])});
           } else {
             r.json().then((err) => setErrors(err.errors));

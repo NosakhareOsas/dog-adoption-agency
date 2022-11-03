@@ -5,6 +5,7 @@ import DogList from "../pages/DogList";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [dogs, setDogs] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -15,6 +16,20 @@ function App() {
     });
   }, []);
 
+  //get all dogs
+  useEffect(()=>{
+    fetch("/dogs").then((r)=>{
+            if (r.ok){
+                r.json().then((dogs)=>setDogs(dogs));
+            }
+        }
+    );
+  }, [])
+
+  function handleNewDog(dog){
+    setDogs([...dogs, dog])
+  }
+
   //logout
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -24,6 +39,7 @@ function App() {
     });
   }
 
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
@@ -32,9 +48,9 @@ function App() {
       <button variant="outline" onClick={handleLogoutClick}>
           Logout
       </button>
-      <DogList />
+      <DogList dogs={dogs}/>
       
-      <CreateDog />
+      <CreateDog onDogCreate={handleNewDog}/>
     </>
   );
 }

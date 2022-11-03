@@ -13,7 +13,7 @@ class DogsController < ApplicationController
     end
 
     def index
-        render json: Dog.all, status: :ok
+        render json: Dog.all, include: [:user], status: :ok
     end
 
     private

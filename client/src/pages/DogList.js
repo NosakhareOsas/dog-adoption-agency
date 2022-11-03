@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import DogCard from "../components/DogCard";
 
 function DogList (){
     const [dogs, setDogs] = useState([])
@@ -13,7 +14,7 @@ function DogList (){
     return (
         <>
             <h3>Dog list</h3>
-            {dogs.map((dog) => <h4 key={dog.id}>{dog.name}</h4>)}
+            {dogs.map((dog) => <DogCard key={dog.id} dog = {dog}/>)}
         </>
         
     );

@@ -39,7 +39,7 @@ function App() {
     setDogs([...dogs, dog])
   }
 
-  function handleDogDelete(deletedDog){
+  function removeDogFromList(deletedDog){
     const updatedDogList = dogs.filter((dog) => dog.id.toString() !== deletedDog.id.toString())
     console.log(updatedDogList)
     setDogs(updatedDogList)
@@ -67,7 +67,7 @@ function App() {
       
       <CreateDog onDogCreate={handleNewDog}/>
       <Routes>
-          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {handleDogDelete}/>}/>
+          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
           <Route path={`dogs/:id`} element={<DogInfo />} />
       </Routes> 
     </>

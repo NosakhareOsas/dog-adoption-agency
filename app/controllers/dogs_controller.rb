@@ -22,6 +22,12 @@ class DogsController < ApplicationController
         render json: dog
     end
 
+    def update
+        dog = Dog.find_by!(id: params[:id])
+        dog.update(is_adopted: params[:is_adopted])
+        render json: dog
+    end
+
     private
     def dog_params
         params.permit(:name, :gender, :breed, :image_url, :size, :age).with_defaults(user_id: session[:user_id], is_adopted: false)

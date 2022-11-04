@@ -24,7 +24,7 @@ class DogsController < ApplicationController
 
     def update
         dog = Dog.find_by!(id: params[:id])
-        dog.update(is_adopted: params[:is_adopted])
+        dog.update(is_adopted: params[:is_adopted], adopted_by: params[:adopted_by])
         render json: dog
     end
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-function DogCard ({dog, onDelete, onAdopt}){
-    const {id, name, breed, gender, image_url, age, size, user} = dog
+function DogCard ({dog, onDelete, onAdopt, currentUser}){
+    const {id, name, breed, gender, image_url, age, size, user, is_adopted} = dog
     const {username} = user
 
     function handleDelete(){
@@ -15,7 +15,7 @@ function DogCard ({dog, onDelete, onAdopt}){
             headers: {
                 "Content-Type": "application/json",
               },
-            body: JSON.stringify({is_adopted: true}),
+            body: JSON.stringify({is_adopted: true, adopted_by: currentUser}),
         })
         .then((r)=>r.json())
         .then((dog)=>onAdopt(dog))
@@ -26,7 +26,7 @@ function DogCard ({dog, onDelete, onAdopt}){
                 <h4>{name} - Submitted by: {username}</h4>
             </Link>
             <button onClick={handleDelete}>Delete</button>
-            {dog.is_adopted ? null : <button onClick={handleUpdate}>Adopt</button>}
+            {is_adopted || username === currentUser ? null : <button onClick={handleUpdate}>Adopt</button>}
             
             
         </>

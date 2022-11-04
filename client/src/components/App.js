@@ -56,8 +56,8 @@ function App() {
       </button>
       
       <Routes>
-          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
-          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} user = {user.username}/>}/>
+          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
+          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
           <Route path={`dogs/new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
           <Route path={`dogs/:id`} element={<DogInfo/>}/>
       </Routes> 

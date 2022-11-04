@@ -1,12 +1,14 @@
 import DogCard from "../components/DogCard";
 
-function MyDogs ({dogs, onDelete, onAdopt, user}){
-    
-    const nonAdoptedDog = dogs.filter((dog) => dog.is_adopted === true && dog.user.username === user)
+function MyDogs ({dogs, onDelete, onAdopt, currentUser}){
+    const myAdoptedDogs = dogs.filter((dog) => dog.adopted_by === currentUser)
+    const myDogs = dogs.filter((dog) => dog.user.username === currentUser)
     return (
         <>
-            <h3>My Dogs</h3>
-            {nonAdoptedDog.map((dog) => <DogCard key={dog.id} dog = {dog} onDelete = {onDelete} onAdopt={onAdopt}/>)}
+            <h3>Dogs I submitted</h3>
+            {myDogs.map((dog) => <DogCard key={dog.id} dog = {dog} onDelete = {onDelete} onAdopt={onAdopt} currentUser = {currentUser}/>)}
+            <h3>Dogs I Adopted</h3>
+            {myAdoptedDogs.map((dog) => <DogCard key={dog.id} dog = {dog} onDelete = {onDelete} onAdopt={onAdopt} currentUser = {currentUser}/>)}
         </>
         
     );

@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import CreateDog from "../pages/CreateDog";
 import DogList from "../pages/DogList";
 import DogInfo from "../pages/DogInfo";
+import MyDogs from "../pages/MyDogs";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -64,10 +65,10 @@ function App() {
           Logout
       </button>
       
-      
-      <CreateDog onDogCreate={handleNewDog}/>
       <Routes>
           <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
+          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
+          <Route path={`dogs/new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
           <Route path={`dogs/:id`} element={<DogInfo />} />
       </Routes> 
     </>

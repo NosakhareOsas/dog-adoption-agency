@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 function DogCard ({dog, onDelete, onAdopt}){
     const {id, name, breed, gender, image_url, age, size, user} = dog
     const {username} = user
+    
     function handleDelete(){
         fetch(`/dogs/${id}`, {method: "DELETE"})
         .then((r)=>r.json())
@@ -17,7 +18,7 @@ function DogCard ({dog, onDelete, onAdopt}){
             body: JSON.stringify({is_adopted: true}),
         })
         .then((r)=>r.json())
-        .then((data)=>onAdopt(data))
+        .then((dog)=>onAdopt(dog))
     }
     return(
         <>

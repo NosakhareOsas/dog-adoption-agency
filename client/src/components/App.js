@@ -17,17 +17,14 @@ function App() {
         r.json().then((user) => setUser(user));
       }
     });
-  }, []);
 
-  //get all dogs
-  useEffect(()=>{
     fetch("/dogs").then((r)=>{
-            if (r.ok){
-                r.json().then((dogs)=>setDogs(dogs));
-            }
-        }
+      if (r.ok){
+          r.json().then((dogs)=>setDogs(dogs));
+      }
+      }
     );
-  }, [])
+  }, []);
 
   function handleNewDog(dog){
     setDogs([...dogs, dog])
@@ -60,9 +57,9 @@ function App() {
       
       <Routes>
           <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
-          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList}/>}/>
+          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} user = {user.username}/>}/>
           <Route path={`dogs/new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
-          <Route path={`dogs/:id`} element={<DogInfo />} />
+          <Route path={`dogs/:id`} element={<DogInfo/>}/>
       </Routes> 
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Route, Routes, useMatch} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Login from "../pages/Login";
 import CreateDog from "../pages/CreateDog";
 import DogList from "../pages/DogList";
@@ -9,13 +9,6 @@ import MyDogs from "../pages/MyDogs";
 function App() {
   const [user, setUser] = useState(null);
   const [dogs, setDogs] = useState([])
-
-  const match = useMatch({
-    path: "/*",
-    end: true, 
-    caseSensitive: true 
-  });
-  console.log(match.pathname, match.pathnameBase, match.params['*'])
 
   useEffect(() => {
     // auto-login

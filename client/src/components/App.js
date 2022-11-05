@@ -6,6 +6,9 @@ import DogList from "../pages/DogList";
 import DogInfo from "../pages/DogInfo";
 import MyDogs from "../pages/MyDogs";
 import NavBar from "./NavBar";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import '../style/App.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,10 +53,12 @@ function App() {
   if (!user) return <Login onLogin={setUser} />;
 
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
+    <div className="App">
+      <Row className="App-header">
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+          <NavBar />
+        </Col>
+      </Row>
       <h1>Hello, {user.username}</h1>
       <button variant="outline" onClick={handleLogoutClick}>
           Logout
@@ -65,7 +70,7 @@ function App() {
           <Route path={`dogs/new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
           <Route path={`dogs/:id`} element={<DogInfo/>}/>
       </Routes> 
-    </>
+    </div>
   );
 }
 

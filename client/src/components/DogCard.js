@@ -33,7 +33,7 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
     }
     return(
         <Card style={{ width: '100%', margin: '10px', }}>
-            <Link key={id} to={`/dogs/${id}`}>
+            <Link key={id} to={`/${id}`}>
                 <Card.Img src={image_url} alt={name} style={{height: '15rem'}}/>
                 <Card.ImgOverlay >
                     <div style={{background: 'white', opacity: 0.8, padding: '10px'}}>

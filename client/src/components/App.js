@@ -5,6 +5,7 @@ import CreateDog from "../pages/CreateDog";
 import DogList from "../pages/DogList";
 import DogInfo from "../pages/DogInfo";
 import MyDogs from "../pages/MyDogs";
+import NavBar from "./NavBar";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,9 @@ function App() {
 
   return (
     <>
+      <header>
+        <NavBar />
+      </header>
       <h1>Hello, {user.username}</h1>
       <button variant="outline" onClick={handleLogoutClick}>
           Logout

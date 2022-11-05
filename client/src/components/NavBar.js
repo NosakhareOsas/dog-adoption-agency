@@ -10,9 +10,9 @@ function NavBar (){
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                    <Nav.Link href="/dogs">HOME</Nav.Link>
-                    <Nav.Link href="/dogs/mydogs">MY DOGS</Nav.Link>
-                    <Nav.Link href="/dogs/new">SUBMIT FOR ADOPTION</Nav.Link>
+                    <Nav.Link href="/">HOME</Nav.Link>
+                    <Nav.Link href="/mydogs">MY DOGS</Nav.Link>
+                    <Nav.Link href="/new">SUBMIT FOR ADOPTION</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

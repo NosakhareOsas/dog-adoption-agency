@@ -55,20 +55,25 @@ function App() {
   return (
     <div className="App">
       <Row className="App-header">
-        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+        <Col xs={12} sm={12} md={12} lg={8} xl={9}>
           <NavBar />
         </Col>
+        <Col xs={12} sm={12} md={12} lg={2} xl={2}>
+          <h5>Hello, {user.username}</h5>
+        </Col>
+        <Col xs={12} sm={12} md={12} lg={1} xl={1}>
+          <button variant="outline" onClick={handleLogoutClick}>
+              Logout
+          </button>
+        </Col>
       </Row>
-      <h1>Hello, {user.username}</h1>
-      <button variant="outline" onClick={handleLogoutClick}>
-          Logout
-      </button>
+      
       
       <Routes>
-          <Route path={`dogs`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
-          <Route path={`dogs/mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
-          <Route path={`dogs/new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
-          <Route path={`dogs/:id`} element={<DogInfo/>}/>
+          <Route path={`/`} element={<DogList dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
+          <Route path={`mydogs`} element={<MyDogs dogs={dogs} onDelete = {removeDogFromList} onAdopt = {removeDogFromList} currentUser = {user.username}/>}/>
+          <Route path={`new`} element={<CreateDog onDogCreate={handleNewDog}/>}/>
+          <Route path={`:id`} element={<DogInfo/>}/>
       </Routes> 
     </div>
   );

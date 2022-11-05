@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: auto auto auto;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(102, 92, 92);
   padding: 30px;
   background-color: #f8f9fa;
 }

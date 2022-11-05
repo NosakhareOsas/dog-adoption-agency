@@ -38,13 +38,13 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
                 <Card.ImgOverlay >
                     <div style={{background: 'white', opacity: 0.8, padding: '10px'}}>
                         <Card.Title style={titleStyle}>{truncate(name, 12)}</Card.Title>
-                        <Card.Text style={textStyle}>Breed: {breed}%</Card.Text>
-                        <Card.Text style={textStyle}>Gender: {gender}%</Card.Text>
+                        <Card.Text style={textStyle}>Breed: {breed}</Card.Text>
+                        <Card.Text style={textStyle}>Gender: {gender}</Card.Text>
+                        <Card.Text style={textStyle}>Submitted by: {username}</Card.Text>
                     </div>
                 </Card.ImgOverlay>
             </Link>
-            <button onClick={handleDelete}>Delete</button>
-            {is_adopted || username === currentUser ? null : <button onClick={handleUpdate}>Adopt</button>}
+            {is_adopted || username === currentUser ? <button onClick={handleDelete}>Delete</button> : <button onClick={handleUpdate}>Adopt</button>}
         </Card>  
     );
 }

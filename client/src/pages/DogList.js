@@ -1,13 +1,20 @@
 import DogCard from "../components/DogCard";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 function DogList ({dogs, onDelete, onAdopt, currentUser}){
-    const nonAdoptedDog = dogs.filter((dog) => dog.is_adopted === false)
+    const nonAdoptedDogs = dogs.filter((dog) => dog.is_adopted === false);
+    const displayDogs = nonAdoptedDogs.map(dog => <Col xs={12} sm={12} md={6} lg={6} xl={4} key={dog.id}>
+            <DogCard key={dog.id} dog = {dog} onDelete = {onDelete} onAdopt={onAdopt} currentUser = {currentUser}/> 
+        </Col>
+        );
     return (
-        <>
-            <h3>Dog list</h3>
-            {nonAdoptedDog.map((dog) => <DogCard key={dog.id} dog = {dog} onDelete = {onDelete} onAdopt={onAdopt} currentUser = {currentUser}/>)}
-        </>
-        
+        <Container>
+            <Row>
+                {displayDogs}
+            </Row>
+        </Container>
     );
 }
 

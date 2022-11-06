@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {Button, Card} from 'react-bootstrap';
+import {Button, Card, Container} from 'react-bootstrap';
 
 export function truncate (string = '', limit = 0) {
     if (string.length > 13) {
@@ -20,7 +20,8 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
         .then((r)=>r.json())
         .then((data)=>onDelete(data))
     }
-    function handleUpdate(){
+    function handleUpdate(e){
+        
         fetch(`/dogs/${id}`, {
             method: "PATCH",
             headers: {
@@ -32,21 +33,23 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
         .then((dog)=>onAdopt(dog))
     }
     return(
-        <Card style={{ width: '100%', margin: '10px', }}>
-            <Link key={id} to={`/${id}`}>
-                <Card.Img src={image_url} alt={name} style={{height: '15rem'}}/>
-                <Card.ImgOverlay >
-                    <div style={{background: 'white', opacity: 0.8, padding: '10px'}}>
-                        <Card.Title style={titleStyle}>{truncate(name, 12)}</Card.Title>
-                        <Card.Text style={textStyle}>Breed: {breed}</Card.Text>
-                        <Card.Text style={textStyle}>Gender: {gender}</Card.Text>
-                        <Card.Text style={textStyle}>Submitted by: {username}</Card.Text>
-                    </div>
-                </Card.ImgOverlay>
-            </Link>
+        <Container>
+            <Card style={{ width: '100%', margin: '10px' }}>
+                <Link key={id} to={`/${id}`}>
+                    <Card.Img src={image_url} alt={name} style={{height: '15rem'}}/>
+                    <Card.ImgOverlay>
+                        <div style={{background: 'white', opacity: 0.8, padding: '10px'}}>
+                            <Card.Title style={titleStyle}>{truncate(name, 12)}</Card.Title>
+                            <Card.Text style={textStyle}>Breed: {breed}</Card.Text>
+                            <Card.Text style={textStyle}>Gender: {gender}</Card.Text>
+                            <Card.Text style={textStyle}>Submitted by: {username}</Card.Text>
+                        </div>
+                    </Card.ImgOverlay>
+                </Link>  
+            </Card>
             {is_adopted || username === currentUser ? <Button variant='outline-dark' onClick={handleDelete}>Delete</Button> : 
-                <Button variant='dark' onClick={handleUpdate}>Adopt</Button>}
-        </Card>  
+                        <Button variant='dark' onClick={handleUpdate}>Adopt</Button>}
+        </Container>  
     );
 }
 

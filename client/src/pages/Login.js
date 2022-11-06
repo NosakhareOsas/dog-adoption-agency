@@ -7,12 +7,12 @@ function Login({ onLogin }) {
 
   return (
     <>
-      <h3>Login</h3>
+      
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           <hr />
-          <p>
+          <p style={{ margin: '1% 25%' }}>
             Don't have an account? &nbsp;
             <button color="secondary" onClick={() => setShowLogin(false)}>
               Sign Up
@@ -23,7 +23,7 @@ function Login({ onLogin }) {
         <>
           <SignUpForm onLogin={onLogin} />
           <hr />
-          <p>
+          <p style={{ margin: '1% 25%' }}>
             Already have an account? &nbsp;
             <button color="secondary" onClick={() => setShowLogin(true)}>
               Log In

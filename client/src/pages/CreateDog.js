@@ -10,11 +10,11 @@ function CreateDog({onDogCreate}){
         size: "",
         age: 0
     }
-    const [formData, setFormData] = useState(baseData)
+    const [formData, setFormData] = useState(baseData);
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false)
+    const handleClose = () => setShow(false);
 
     function handleChange(e){
         setFormData({...formData, [e.target.name]:e.target.value})

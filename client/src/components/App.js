@@ -6,8 +6,7 @@ import DogList from "../pages/DogList";
 import DogInfo from "../pages/DogInfo";
 import MyDogs from "../pages/MyDogs";
 import NavBar from "./NavBar";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Button, Row, Col } from 'react-bootstrap';
 import '../style/App.css';
 
 function App() {
@@ -62,9 +61,9 @@ function App() {
           <h5>Hello, {user.username}</h5>
         </Col>
         <Col xs={12} sm={12} md={12} lg={1} xl={1}>
-          <button variant="outline" onClick={handleLogoutClick}>
+          <Button variant="outline-dark" onClick={handleLogoutClick}>
               Logout
-          </button>
+          </Button>
         </Col>
       </Row>
       

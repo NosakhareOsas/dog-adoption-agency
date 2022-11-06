@@ -24,7 +24,7 @@ function CreateDog({onDogCreate}){
         e.preventDefault();
         console.log(formData)
         setIsLoading(true);
-        fetch("/dogs", {
+        fetch("api/dogs", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

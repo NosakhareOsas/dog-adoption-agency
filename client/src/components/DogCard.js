@@ -16,13 +16,13 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
     const {username} = user
 
     function handleDelete(){
-        fetch(`/dogs/${id}`, {method: "DELETE"})
+        fetch(`api/dogs/${id}`, {method: "DELETE"})
         .then((r)=>r.json())
         .then((data)=>onDelete(data))
     }
     function handleUpdate(e){
         
-        fetch(`/dogs/${id}`, {
+        fetch(`api/dogs/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

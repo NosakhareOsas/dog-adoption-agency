@@ -15,13 +15,13 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
+    fetch("api/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
 
-    fetch("/dogs").then((r)=>{
+    fetch("api/dogs").then((r)=>{
       if (r.ok){
           r.json().then((dogs)=>setDogs(dogs));
       }
@@ -41,7 +41,7 @@ function App() {
 
   //logout
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("api/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
       }

@@ -25,7 +25,7 @@ function DogInfo(){
     };
 
     useEffect(()=>{
-        fetch(`/dogs/${id}`).then((r)=>{
+        fetch(`api/dogs/${id}`).then((r)=>{
             if(r.ok){
                 r.json().then((dog)=> {
                     setDog(dog)
@@ -35,7 +35,6 @@ function DogInfo(){
             }})
     }, [])
 
-    console.log(errors[0])
     return(
         <Container>
             {errors[0] !== undefined ? <>{errors.map((err) => (<h2 key={err}>{err}</h2>))}</> : 

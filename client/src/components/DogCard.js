@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
+import {Button, Card} from 'react-bootstrap';
 
 export function truncate (string = '', limit = 0) {
     if (string.length > 13) {
@@ -44,7 +44,8 @@ function DogCard ({dog, onDelete, onAdopt, currentUser}){
                     </div>
                 </Card.ImgOverlay>
             </Link>
-            {is_adopted || username === currentUser ? <button onClick={handleDelete}>Delete</button> : <button onClick={handleUpdate}>Adopt</button>}
+            {is_adopted || username === currentUser ? <Button variant='outline-dark' onClick={handleDelete}>Delete</Button> : 
+                <Button variant='dark' onClick={handleUpdate}>Adopt</Button>}
         </Card>  
     );
 }

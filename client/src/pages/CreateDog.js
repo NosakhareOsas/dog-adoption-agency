@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {Button, Card} from 'react-bootstrap';
-import Badge from 'react-bootstrap/Badge';
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
+import {Button, Card, Form, Modal, FloatingLabel, Col, Row, Container} from 'react-bootstrap';
 
 function CreateDog({onDogCreate}){
     let baseData = {
@@ -19,6 +13,8 @@ function CreateDog({onDogCreate}){
     const [formData, setFormData] = useState(baseData)
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false)
 
     function handleChange(e){
         setFormData({...formData, [e.target.name]:e.target.value})
@@ -39,9 +35,12 @@ function CreateDog({onDogCreate}){
           if (r.ok) {
             r.json().then((dog) => {
                 onDogCreate(dog)
-                setErrors([])});
+                setErrors([])
+                setShow(true);});
           } else {
-            r.json().then((err) => setErrors(err.errors));
+            r.json().then((err) => {
+                setErrors(err.errors);
+                setShow(true);});
           }
         });
       }
@@ -120,12 +119,33 @@ function CreateDog({onDogCreate}){
                             </Form.Select>
                         </Form.Group>
                     </Row>
-                    <Button variant="primary" color="primary" type="submit" style={{ padding: '10px', margin: '10px' }}>
+                    <Button variant="dark" type="submit" style={{ padding: '10px', margin: '10px' }}>
                         {isLoading ? "Loading..." : "Create Dog Profile"}
                     </Button>
                 </Form>
-                    {errors.map((err) => (<h5 key={err}>{err}</h5>))}
-            </Card> 
+            </Card>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        {errors[0] === undefined ? <>Submission Successful</> :
+                        <>Error!!!</> }
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {errors[0] === undefined ? <>You have successfully submitted your dog for adoption!!!</> :
+                        <>{errors.map((err) => (<h6 key={err}>{err}</h6>))}</> }
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal> 
         </Container>     
     );
 }

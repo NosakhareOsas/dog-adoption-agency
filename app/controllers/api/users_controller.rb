@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -18,9 +17,5 @@ class Api::UsersController < ApplicationController
     private
     def user_params
         params.permit(:firstname, :surname, :username, :password, :password_confirmation, :bio)
-    end
-
-    def render_unprocessable_entity(invalid)
-        render json:{errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end

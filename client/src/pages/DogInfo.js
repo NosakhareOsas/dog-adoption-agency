@@ -39,10 +39,10 @@ function DogInfo(){
         <Container>
             {errors[0] !== undefined ? <>{errors.map((err) => (<h2 key={err}>{err}</h2>))}</> : 
                 <Row>
-                    <Col>
+                    <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Image src={image_url} alt={name}  width='450' rounded="true" fluid="true" style={imgStyle}/>
                     </Col>
-                    <Col style={divStyle}>
+                    <Col style={divStyle} xs={12} sm={12} md={12} lg={12} xl={12}>
                         <h1 style={{fontWeight: 700}}>{name}</h1>
                         <Row>
                             <Col><h4> Breed</h4><p>{breed}</p></Col>

@@ -18,16 +18,16 @@ function App() {
     fetch("api/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-      }
-    });
+      }});
+  }, []);
 
+  useEffect(()=>{
+    //load dogs
     fetch("api/dogs").then((r)=>{
       if (r.ok){
           r.json().then((dogs)=>setDogs(dogs));
-      }
-      }
-    );
-  }, []);
+      }});
+  }, [user]);
 
   function handleNewDog(dog){
     setDogs([...dogs, dog])

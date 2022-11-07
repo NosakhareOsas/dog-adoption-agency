@@ -42,6 +42,7 @@ function LoginForm({ onLogin }) {
                                     placeholder="Username"
                                     onChange={(e) => setUsername(e.target.value)}
                                     name='username'
+                                    autoComplete="username"
                                     style={{ height: '50px' }}
                                 />
                             </FloatingLabel>
@@ -55,7 +56,9 @@ function LoginForm({ onLogin }) {
                                     placeholder="Password"
                                     onChange={(e) => setPassword(e.target.value)}
                                     name='password'
+                                    autoComplete="current-password"
                                     style={{ height: '50px' }}
+
                                 />
                             </FloatingLabel>
                         </Form.Group>

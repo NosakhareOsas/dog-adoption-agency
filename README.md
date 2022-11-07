@@ -31,7 +31,7 @@ https://powerful-headland-48083.herokuapp.com/
 
 The REST API to the dog-adoption-agency React App is described below.
 
-## Get list of Cities
+## Get list of Dogs
 
 ### Request
 

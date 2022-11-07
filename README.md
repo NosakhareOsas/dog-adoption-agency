@@ -91,7 +91,7 @@ The REST API to the dog-adoption-agency React App is described below.
 
 `POST /api/dogs/new`
 
-    curl -i -H 'Accept: application/json' -d 'comment=great' http://localhost:3000/api/dogs/new
+    curl -i -H 'Accept: application/json' -d '{}' http://localhost:3000/api/dogs/new
 
 ### Response
 
@@ -110,7 +110,7 @@ The REST API to the dog-adoption-agency React App is described below.
 
 `PATCH /api/dogs/:id`
 
-    curl -i -H 'Accept: application/json' -X PATCH -d 'comment=good' http://localhost:9292/api/dogs/9
+    curl -i -H 'Accept: application/json' -X PATCH -d 'is_adopted=true, adopted_by=sam234' http://localhost:9292/api/dogs/9
 
 ### Response
 
